@@ -1,9 +1,8 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect } from "react";
-import { useState } from "react";
 
 const Nav = () => {
   const [isVisible, setIsVisible] = useState(true);
