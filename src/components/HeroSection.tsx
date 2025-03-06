@@ -14,7 +14,7 @@ const brandImages = [
 ]
 const HeroSection = () => {
   return (
-    <div className="bg-blue-40 relative overflow-hidden border p-6 md:max-h-[907px] lg:py-10 xl:px-20 2xl:max-h-[1400px]">
+    <div className="bg-blue-40 font-mona-sans relative overflow-hidden border p-6 md:max-h-[907px] lg:py-10 xl:px-20 2xl:max-h-[1400px]">
       <div className="flex h-full flex-col gap-10 md:flex-row md:justify-between xl:gap-[94px]">
         {/* text */}
         <div className="flex max-w-[675px] flex-col gap-20 md:w-[50%] md:py-[98px] xl:w-[60%] xl:gap-[168px]">
@@ -22,7 +22,7 @@ const HeroSection = () => {
             <h1 className="text-black-text-variant-2 text-4xl font-bold sm:text-5xl md:text-4xl lg:text-5xl xl:text-[56px] xl:leading-16">
               Reach More Customers, Follow Up With Ease
             </h1>
-            <p className="text-grey-text-variant-2 text-base lg:text-2xl lg:leading-10">
+            <p className="font-circular-std text-grey-text-variant-2 text-base lg:text-2xl lg:leading-10">
               This AI-powered calling solution helps you connect with customers
               effortlessly, track conversations in real-time, and never miss an
               opportunity.
