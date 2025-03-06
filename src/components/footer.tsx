@@ -14,7 +14,7 @@ function Footer() {
             </p>
           </div>
           <button className="border-blue-border-variant-1 text-black-text-variant-3 mt-[12px] cursor-pointer rounded-xl border bg-white py-[12px] pr-[16px] pl-[24px]">
-            Get Started
+            Get Started Now
           </button>
         </div>
       </div>

@@ -32,7 +32,7 @@ const HeroSection = () => {
             <div className="mt-20 flex items-center gap-8 md:mt-0">
               <Button variant="secondary" size="lg" asChild>
                 <Link href={"/login"}>
-                  Get started
+                  Get Started Now
                   <Image
                     src="/images/arrow-right.svg"
                     alt="right arrow"
