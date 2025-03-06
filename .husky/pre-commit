@@ -1,47 +1,4 @@
 #!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
 
-# Branch protection
-BRANCH=$(git rev-parse --abbrev-ref HEAD)
-if [ "$BRANCH" = "main" ] || [ "$BRANCH" = "dev" ]; then
-    echo "🚨 Direct pushes to '$BRANCH' are restricted. 🚨"
-    echo "Please create a feature branch and push your changes there."
-    exit 1
-fi
-
-echo "🔍 Running pre-commit checks..."
-
-echo "🎨 Checking code formatting..."
-
-# Check Prettier standards
-pnpm run check-format ||
-(
-    echo "⚠️ Code formatting does not meet the required standards. Running auto-formatting..."
-    npm run format;
-    git add .;
-    echo "✅ Formatting applied. Amending the commit with updated formatting."
-    git commit --amend --no-edit;
-    echo "✅ Formatting complete. Please retry your push."
-)
-
-echo "🔎 Running ESLint checks..."
-
-# Check ESLint Standards
-pnpm run lint ||
-    (
-        echo "❌ ESLint checks failed. Please resolve the issues above before committing."
-        false
-    )
-
-echo "📌 Checking for TypeScript errors..."
-
-# Check TypeScript Standards
-pnpm run check-types ||
-    (
-        echo "❌ TypeScript compilation failed. Please fix the errors before proceeding."
-        false
-    )
-
-# If all checks pass
-echo "✅ All checks passed. Proceeding with commit."
-
-echo "🚀 Push your changes using 'git push' to update the remote repository."
+npm test
