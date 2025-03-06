@@ -16,7 +16,7 @@ const whyCardArr = [
 export default function WhySection() {
   return (
     <section
-      className="flex w-full flex-col items-center justify-center gap-10 p-8"
+      className="flex w-full flex-col items-center justify-center gap-10 px-6 py-8"
       aria-labelledby="why-choose-us"
     >
       <div className="flex max-w-[757px] flex-col gap-6">
@@ -33,7 +33,7 @@ export default function WhySection() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 justify-between gap-x-7 gap-y-8 p-4 md:gap-y-10 lg:grid-cols-3 lg:grid-rows-2">
+      <div className="grid grid-cols-1 justify-between gap-x-7 gap-y-8 py-4 md:gap-y-10 lg:grid-cols-3 lg:grid-rows-2">
         {whyCardArr.map((card) => (
           <article
             key={card.title}
@@ -48,7 +48,7 @@ export default function WhySection() {
           </article>
         ))}
         <div className="col-span-full flex flex-col items-start justify-between gap-x-7 gap-y-8 lg:flex-row">
-          <article className="bg-secondary-variant flex flex-col items-center gap-4 rounded-3xl p-8 md:items-start md:gap-8">
+          <article className="bg-secondary-variant flex w-1/2 flex-col items-center gap-4 rounded-3xl p-8 md:items-start md:gap-8">
             <h3 className="text-center text-2xl font-bold md:text-start md:text-[2rem]">
               Seamless Integration
             </h3>
@@ -58,7 +58,7 @@ export default function WhySection() {
               required
             </p>
           </article>
-          <article className="bg-secondary-variant flex flex-col items-center gap-4 rounded-3xl p-8 md:items-start md:gap-8">
+          <article className="bg-secondary-variant flex w-1/2 flex-col items-center gap-4 rounded-3xl p-8 md:items-start md:gap-8">
             <h3 className="text-center text-2xl font-bold md:text-start md:text-[2rem]">
               Scalable & Reliable
             </h3>

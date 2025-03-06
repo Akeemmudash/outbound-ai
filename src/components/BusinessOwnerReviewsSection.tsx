@@ -1,6 +1,9 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import {
+  useDotButton,
+  usePrevNextButtons,
+} from "@/hooks/useCarouselButtonsHooks"
 import quoteIcon from "@/assets/quote.svg"
 import useEmblaCarousel from "embla-carousel-react"
 import Image from "next/image"
@@ -45,31 +48,25 @@ const businessOwnerReviews = [
 ]
 
 function BusinessOwnerReviewsSection() {
-  const [emblaRef, embla] = useEmblaCarousel({ loop: true })
-  const [selectedIndex, setSelectedIndex] = useState(0)
-  const [scrollSnaps, setScrollSnaps] = useState<number[]>([])
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false })
 
-  const onDotButtonClick = (index: number) => {
-    if (!embla) return
-    embla.scrollTo(index)
-  }
+  const { selectedIndex, scrollSnaps, onDotButtonClick } =
+    useDotButton(emblaApi)
 
-  useEffect(() => {
-    if (!embla) return
-    const onInit = () => setScrollSnaps(embla.scrollSnapList())
-    const onSelect = () => setSelectedIndex(embla.selectedScrollSnap())
-    onInit()
-    onSelect()
-    embla.on("reInit", onInit).on("reInit", onSelect).on("select", onSelect)
-  }, [embla])
+  const {
+    prevBtnDisabled,
+    nextBtnDisabled,
+    onPrevButtonClick,
+    onNextButtonClick,
+  } = usePrevNextButtons(emblaApi)
 
   return (
-    <section className="flex flex-col items-center justify-center gap-14 bg-[#F6F8FA] p-8">
+    <section className="bg-secondary-variant flex flex-col items-center justify-center gap-14 p-8">
       <div className="flex flex-col items-center justify-center gap-4">
-        <h4 className="max-w-[580px] text-center text-4xl leading-10 font-[900] md:text-[40px] md:leading-12">
+        <h4 className="text-black-text-variant-2 font-circular-std max-w-[580px] text-center text-4xl leading-10 font-[900] md:text-[40px] md:leading-12">
           What Business Owners Are Saying About Us
         </h4>
-        <p className="max-w-[707px] text-center text-sm leading-6 md:text-base">
+        <p className="text-secondary font-mona-sans max-w-[707px] text-center text-sm leading-6 md:text-base">
           Join business owners who have improved customer engagement and
           streamlined outreach with our AI-powered outbound calling. Hear their
           success stories and see the impact.
@@ -111,14 +108,14 @@ function BusinessOwnerReviewsSection() {
                   className="h-auto w-10 object-cover md:w-[86px]"
                 />
 
-                <p className="text-sm leading-6 break-words md:text-base">
+                <p className="text-secondary font-mono-sans text-sm leading-6 break-words md:text-base">
                   {review.text}
                 </p>
                 <div className="mt-4 md:mt-6">
-                  <p className="text-base text-[2rem] leading-6 font-bold">
+                  <p className="text-black-background-variant-4 font-circular-std text-base text-[2rem] leading-6 font-bold">
                     {review.name}
                   </p>
-                  <span className="mt-2 block text-sm leading-6 md:text-base">
+                  <span className="text-grey-text-variant-3 font-circular-std mt-2 block text-sm leading-6 md:text-base">
                     {review.businessName}
                   </span>
                 </div>
@@ -127,20 +124,22 @@ function BusinessOwnerReviewsSection() {
           ))}
         </div>
 
-        <div className="absolute top-0 left-0 z-50 hidden h-full w-[100px] items-center justify-center bg-[#B2E1C8] opacity-80 md:flex lg:w-[200px]">
+        <div className="bg-secondary absolute top-0 left-0 z-50 hidden h-full w-[100px] items-center justify-center opacity-90 md:flex lg:w-[200px]">
           <button
             type="button"
-            onClick={() => embla && embla.scrollPrev()}
-            className="flex cursor-pointer items-center justify-center"
+            onClick={onPrevButtonClick}
+            disabled={prevBtnDisabled}
+            className="flex cursor-pointer items-center justify-center transition-all disabled:opacity-0"
           >
             <LeftArrowIcon />
           </button>
         </div>
-        <div className="absolute top-0 right-0 z-50 hidden h-full w-[100px] items-center justify-center bg-[#B2E1C8] opacity-80 md:flex lg:w-[200px]">
+        <div className="bg-secondary absolute top-0 right-0 z-50 hidden h-full w-[100px] items-center justify-center opacity-90 md:flex lg:w-[200px]">
           <button
             type="button"
-            onClick={() => embla && embla.scrollNext()}
-            className="flex cursor-pointer items-center justify-center"
+            onClick={onNextButtonClick}
+            disabled={nextBtnDisabled}
+            className="flex cursor-pointer items-center justify-center transition-all disabled:opacity-0"
           >
             <RightArrowIcon />
           </button>
@@ -159,7 +158,7 @@ function BusinessOwnerReviewsSection() {
 
       <button
         type="button"
-        className="cursor-pointer rounded-xl border px-6 py-3 text-center align-middle"
+        className="bg-white-background-color text-black-text-variant-5 border-grey-border-variant-1 cursor-pointer rounded-xl border px-6 py-3 text-center align-middle"
       >
         See more
       </button>
