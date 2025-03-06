@@ -16,7 +16,7 @@ const whyCardArr = [
 export default function WhySection() {
   return (
     <section
-      className="flex w-full flex-col items-center justify-center gap-10 p-8"
+      className="flex w-full flex-col items-center justify-center gap-10 px-6 py-8"
       aria-labelledby="why-choose-us"
     >
       <div className="font-mona-sans flex max-w-[757px] flex-col gap-6">
@@ -33,7 +33,7 @@ export default function WhySection() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 justify-between gap-x-7 gap-y-8 p-4 md:gap-y-10 lg:grid-cols-3 lg:grid-rows-2">
+      <div className="grid grid-cols-1 justify-between gap-x-7 gap-y-8 py-4 md:gap-y-10 lg:grid-cols-3 lg:grid-rows-2">
         {whyCardArr.map((card) => (
           <article
             key={card.title}

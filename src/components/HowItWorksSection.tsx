@@ -114,7 +114,7 @@ const cardArray: CardProps[] = [
 
 function HowItWorksSection() {
   return (
-    <section className="font-mona-sans flex flex-col items-center justify-center gap-8 p-8">
+    <section className="font-mona-sans flex flex-col items-center justify-center gap-8 p-10">
       <div className="flex max-w-[580px] flex-col items-center justify-center gap-1.5 md:gap-3">
         <h2 className="text-black-text-variant-1 text-center text-3xl leading-10 font-bold md:text-[2.5rem] md:leading-16">
           How It Works
