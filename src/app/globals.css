@@ -11,7 +11,7 @@
   --color-white-background-color: #ffffff;
   --color-black-background-variant-3: #212121;
   --color-black-background-variant-4: #2a2a2a;
-  --color-black-background-variant-4: #1b1b1b;
+  --color-black-background-variant-5: #1b1b1b;
   --color-black-text-variant-1: #212121;
   --color-black-text-variant-2: #090f1c;
   --color-black-text-variant-3: #2a2a2a;
@@ -24,6 +24,7 @@
   --color-white-text-variant-1: #ececec;
   --color-black-button-variant-1: #1b1b1b;
   --color-grey-border-variant-1: #a0a0a0;
+  --color-grey-border-variant-2: #e2e2e2;
   --color-blue-border-variant-1: #0063cc;
 }
 
