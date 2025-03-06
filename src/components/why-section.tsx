@@ -48,7 +48,7 @@ export default function WhySection() {
           </article>
         ))}
         <div className="col-span-full flex flex-col items-start justify-between gap-x-7 gap-y-8 lg:flex-row">
-          <article className="bg-secondary-variant flex w-1/2 flex-col items-center gap-4 rounded-3xl p-8 md:items-start md:gap-8">
+          <article className="bg-secondary-variant flex w-full flex-col items-center gap-4 rounded-3xl p-8 md:items-start md:gap-8 lg:w-1/2">
             <h3 className="text-center text-2xl font-bold md:text-start md:text-[2rem]">
               Seamless Integration
             </h3>
@@ -58,7 +58,7 @@ export default function WhySection() {
               required
             </p>
           </article>
-          <article className="bg-secondary-variant flex w-1/2 flex-col items-center gap-4 rounded-3xl p-8 md:items-start md:gap-8">
+          <article className="bg-secondary-variant flex w-full flex-col items-center gap-4 rounded-3xl p-8 md:items-start md:gap-8 lg:w-1/2">
             <h3 className="text-center text-2xl font-bold md:text-start md:text-[2rem]">
               Scalable & Reliable
             </h3>
