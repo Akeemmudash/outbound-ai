@@ -19,10 +19,10 @@ export default function WhySection() {
       className="flex w-full flex-col items-center justify-center gap-10 px-6 py-8"
       aria-labelledby="why-choose-us"
     >
-      <div className="flex max-w-[757px] flex-col gap-6">
+      <div className="font-mona-sans flex max-w-[757px] flex-col gap-6">
         <h2
           id="why-choose-us"
-          className="text-center text-3xl leading-10 font-extrabold md:text-[2.5rem] md:leading-12"
+          className="font-mona-sans text-center text-3xl leading-10 font-extrabold md:text-[2.5rem] md:leading-12"
         >
           Why Choose Our AI-Powered Outbound Calling Solution?
         </h2>
@@ -39,10 +39,10 @@ export default function WhySection() {
             key={card.title}
             className="bg-secondary-variant flex flex-col items-center gap-4 rounded-3xl p-8 md:items-start md:gap-8"
           >
-            <h3 className="text-center text-2xl font-bold md:text-start md:text-[2rem]">
+            <h3 className="font-circular-std text-center text-2xl font-bold md:text-start md:text-[2rem]">
               {card.title}
             </h3>
-            <p className="text-grey-text-variant-2 text-center text-sm leading-6 md:text-start md:text-base">
+            <p className="text-grey-text-variant-2 font-noto-sans text-center text-sm leading-6 md:text-start md:text-base">
               {card.text}
             </p>
           </article>
@@ -52,7 +52,7 @@ export default function WhySection() {
             <h3 className="text-center text-2xl font-bold md:text-start md:text-[2rem]">
               Seamless Integration
             </h3>
-            <p className="text-grey-text-variant-2 text-center text-sm leading-6 md:text-start md:text-base">
+            <p className="text-secondary font-noto-sans text-center text-sm leading-6 md:text-start md:text-base">
               Easily upload contact lists, customize scripts, and adjust
               settings to fit your business needs—no technical expertise
               required
@@ -62,7 +62,7 @@ export default function WhySection() {
             <h3 className="text-center text-2xl font-bold md:text-start md:text-[2rem]">
               Scalable & Reliable
             </h3>
-            <p className="text-grey-text-variant-2 text-center text-sm leading-6 md:text-start md:text-base">
+            <p className="text-secondary font-noto-sans text-center text-sm leading-6 md:text-start md:text-base">
               Whether you&apos;re making a few calls or thousands, our AI system
               scales with your business, ensuring consistent and professional
               communication.

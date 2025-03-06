@@ -2,7 +2,7 @@ function Footer() {
   const year = new Date().getFullYear()
   return (
     <footer className="flex flex-col items-center justify-center gap-12 p-8">
-      <div className="bg-black-text-variant-5 w-full max-w-[1280px] rounded-3xl text-center text-white">
+      <div className="w-full max-w-[1280px] rounded-3xl bg-[url(/images/footerImage.png)] bg-cover bg-center bg-no-repeat text-center text-white">
         <div className="flex flex-col items-center space-y-8 px-4 py-8 lg:pt-[89px] lg:pb-[219px]">
           <div className="space-y-3 lg:w-[627px]">
             <h5 className="text-3xl font-bold lg:text-5xl lg:leading-[68px]">
@@ -14,7 +14,7 @@ function Footer() {
             </p>
           </div>
           <button className="border-blue-border-variant-1 text-black-text-variant-3 mt-[12px] cursor-pointer rounded-xl border bg-white py-[12px] pr-[16px] pl-[24px]">
-            Try now for free
+            Get Started Now
           </button>
         </div>
       </div>
