@@ -4,6 +4,7 @@
   --font-circular-std: "circular-std", sans-serif;
   --font-roboto: "roboto", sans-serif;
   --font-mona-sans: "mona-sans", sans-serif;
+  --font-noto-sans: "noto-sans", sans-serif;
   --color-primary: #090f1c;
   --color-secondary: #53686a;
   --font-weight-bolder: 900;
@@ -23,6 +24,7 @@
   --color-white-text-variant-1: #ececec;
   --color-black-button-variant-1: #1b1b1b;
   --color-grey-border-variant-1: #a0a0a0;
+  --color-blue-border-variant-1: #0063cc;
 }
 
 input:-webkit-autofill {
