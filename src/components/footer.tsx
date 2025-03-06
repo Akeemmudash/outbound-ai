@@ -1,7 +1,7 @@
 function Footer() {
   const year = new Date().getFullYear()
   return (
-    <footer className="flex flex-col items-center justify-center gap-12 p-8">
+    <footer className="font-circular-std flex flex-col items-center justify-center gap-12 p-8">
       <div className="bg-black-text-variant-5 w-full max-w-[1280px] rounded-3xl text-center text-white">
         <div className="flex flex-col items-center space-y-8 px-4 py-8 lg:pt-[89px] lg:pb-[219px]">
           <div className="space-y-3 lg:w-[627px]">
