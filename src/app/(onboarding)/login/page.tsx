@@ -7,6 +7,15 @@ import { useRouter } from "next/navigation"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
+// Define your schema here
+const logInSchema = z.object({
+  email: z.string().email("Invalid email format"),
+  password: z.string().min(6, "Password must be at least 6 characters"),
+})
+
+type LogInData = z.infer<typeof logInSchema>
+
+export default function LoginPage() {
   const {
     register,
     handleSubmit,
