@@ -23,13 +23,13 @@ const Navbar = () => {
         />
       </div>
       <ul className="hidden gap-[40px] text-[14px] leading-[21] font-[400] text-white sm:flex">
-        <li className="hover:opacity-70">About</li>
-        <li className="hover:opacity-70">Features</li>
-        <li className="hover:opacity-70">Pricing</li>
-        <li className="hover:opacity-70">Blog</li>
+        <li className="cursor-pointer hover:opacity-70">About</li>
+        <li className="cursor-pointer hover:opacity-70">Features</li>
+        <li className="cursor-pointer hover:opacity-70">Pricing</li>
+        <li className="cursor-pointer hover:opacity-70">Blog</li>
       </ul>
       <ul
-        className={`absolute z-50 flex w-full -translate-y-full transform flex-col gap-4 bg-[#212121] py-10 text-center text-[14px] font-[400] text-white ${open ? "translate-y-35" : ""} `}
+        className={`absolute z-50 flex w-full -translate-y-full transform flex-col gap-4 bg-[#212121] px-4 py-10 text-center text-[14px] font-[400] text-white ${open ? "translate-y-42" : ""} `}
       >
         <li className="border-b border-solid border-slate-200 hover:opacity-70">
           About
@@ -43,8 +43,18 @@ const Navbar = () => {
         <li className="border-b border-solid border-slate-200 hover:opacity-70">
           Blog
         </li>
+        {/* <button></button>
+        <li className="border-b border-solid border-slate-200 hover:opacity-70">
+          Sign-up
+        </li> */}
+        <Button asChild className="px-6 py-3 hover:opacity-70">
+          <Link href={"/signup"}>Sign up</Link>
+        </Button>
       </ul>
-      <Button asChild className="px-6 py-3 hover:opacity-70">
+      <Button
+        asChild
+        className="!hidden px-6 py-3 hover:opacity-70 sm:!inline-flex"
+      >
         <Link href={"/signup"}>Sign up</Link>
       </Button>
       <button
