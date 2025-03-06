@@ -1,5 +1,6 @@
 "use client"
 import React from "react"
+<<<<<<< HEAD
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -77,4 +78,20 @@ export default function Login() {
       </div>
     </div>
   )
+=======
+import LoginFlow from "./login-flow"
+import Image from "next/image"
+
+
+export default function Login() {
+  return (<div className="flex flex-col items-center gap-16 justify-center h-screen ">
+     <Image
+        width={280}
+        alt="logo"
+        height={69}
+        src={"/images/Logo.png"}
+      />
+    <LoginFlow/>
+    </div>)
+>>>>>>> 73c1c84 (feat:create a login page)
 }
