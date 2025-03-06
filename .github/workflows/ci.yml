@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: hng12interns
+    runs-on: [outbound]
     timeout-minutes: 10
 
     steps:
