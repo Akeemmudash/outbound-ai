@@ -1,11 +1,12 @@
 "use client"
 
-import "swiper/css"
-import "swiper/css/navigation"
-import { useRef } from "react"
+import {
+  useDotButton,
+  usePrevNextButtons,
+} from "@/hooks/useCarouselButtonsHooks"
 import quoteIcon from "@/assets/quote.svg"
-import { Swiper, SwiperSlide } from "swiper/react"
-import { Navigation } from "swiper/modules"
+import useEmblaCarousel from "embla-carousel-react"
+import Image from "next/image"
 
 const businessOwnerReviews = [
   {
@@ -47,15 +48,25 @@ const businessOwnerReviews = [
 ]
 
 function BusinessOwnerReviewsSection() {
-  const prevButtonRef = useRef(null)
-  const nextButtonRef = useRef(null)
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false })
+
+  const { selectedIndex, scrollSnaps, onDotButtonClick } =
+    useDotButton(emblaApi)
+
+  const {
+    prevBtnDisabled,
+    nextBtnDisabled,
+    onPrevButtonClick,
+    onNextButtonClick,
+  } = usePrevNextButtons(emblaApi)
+
   return (
-    <section className="flex flex-col items-center justify-center gap-14 bg-[#F6F8FA] p-8">
+    <section className="bg-secondary-variant flex flex-col items-center justify-center gap-14 p-8">
       <div className="flex flex-col items-center justify-center gap-4">
-        <h4 className="max-w-[580px] text-center text-[40px] leading-12 font-[900]">
+        <h4 className="text-black-text-variant-2 font-circular-std max-w-[580px] text-center text-4xl leading-10 font-[900] md:text-[40px] md:leading-12">
           What Business Owners Are Saying About Us
         </h4>
-        <p className="max-w-[707px] text-center text-base leading-6">
+        <p className="text-secondary font-mona-sans max-w-[707px] text-center text-sm leading-6 md:text-base">
           Join business owners who have improved customer engagement and
           streamlined outreach with our AI-powered outbound calling. Hear their
           success stories and see the impact.
@@ -63,90 +74,91 @@ function BusinessOwnerReviewsSection() {
       </div>
       {/* Carousel Section */}
 
-      <article className="relative flex h-[400px] w-full justify-center">
-        <Swiper
-          loop={true}
-          spaceBetween={30}
-          centeredSlides={true}
-          slidesPerView={1}
-          breakpoints={{
-            1024: {
-              slidesPerView: 2,
-              spaceBetween: 20,
-              centeredSlides: false,
-            },
-            1280: {
-              slidesPerView: 3,
-              spaceBetween: 15,
-              centeredSlides: true,
-            },
-          }}
-          navigation={{
-            prevEl: prevButtonRef.current,
-            nextEl: nextButtonRef.current,
-          }}
-          modules={[Navigation]}
-        >
+      <article
+        ref={emblaRef}
+        className="relative flex h-[700px] w-full flex-col justify-center gap-6 overflow-hidden sm:w-[80%] md:h-[400px] md:w-full"
+      >
+        <div className="flex w-full touch-pan-y touch-pinch-zoom gap-4">
           {businessOwnerReviews.map((review, index) => (
-            <SwiperSlide
+            <div
               key={index}
-              className={`!flex h-full !w-max items-center transition-all duration-500 lg:w-[60%]`}
+              className={`flex h-full w-full min-w-0 flex-none [transform:translate3d(0,0,0)] flex-col items-center transition-all duration-500 md:w-[80%] md:flex-row lg:w-[60%]`}
             >
               <figure
-                className={`relative h-full w-full max-w-[308px] shrink-0`}
+                className={`relative h-[350px] w-full shrink-0 md:h-full md:max-w-[308px]`}
               >
-                <img
+                <Image
                   src={review.imagePath}
                   alt={review.name}
-                  className="size-full object-cover object-center"
+                  placeholder="empty"
+                  priority
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  fill
+                  className="rounded-2xl object-cover object-center md:rounded-none"
                 />
               </figure>
               <div
-                className={`flex max-w-[500px] flex-col gap-8 p-5 transition-all`}
+                className={`flex w-full flex-col gap-4 p-2.5 transition-all md:gap-8 md:p-5`}
               >
-                <img
+                <Image
+                  width={86}
+                  height={72.4}
                   src={quoteIcon.src}
                   alt="quote icon"
-                  className="h-auto w-[86px] object-cover"
+                  className="h-auto w-10 object-cover md:w-[86px]"
                 />
 
-                <p className="text-base leading-6 break-words">{review.text}</p>
-                <div className="mt-6">
-                  <p className="text-[2rem] leading-6 font-bold">
+                <p className="text-secondary font-mono-sans text-sm leading-6 break-words md:text-base">
+                  {review.text}
+                </p>
+                <div className="mt-4 md:mt-6">
+                  <p className="text-black-background-variant-4 font-circular-std text-base text-[2rem] leading-6 font-bold">
                     {review.name}
                   </p>
-                  <span className="mt-2 block text-base leading-6">
+                  <span className="text-grey-text-variant-3 font-circular-std mt-2 block text-sm leading-6 md:text-base">
                     {review.businessName}
                   </span>
                 </div>
               </div>
-            </SwiperSlide>
+            </div>
           ))}
-        </Swiper>
+        </div>
 
-        <div className="absolute top-0 left-0 z-50 flex h-full w-[100px] items-center justify-center bg-[#B2E1C8] opacity-80 lg:w-[200px]">
+        <div className="absolute top-0 left-0 z-50 hidden h-full w-[100px] items-center justify-center bg-[#B2E1C8CC] opacity-80 md:flex lg:w-[200px]">
           <button
             type="button"
-            ref={prevButtonRef}
-            className="flex cursor-pointer items-center justify-center"
+            onClick={onPrevButtonClick}
+            disabled={prevBtnDisabled}
+            className="flex cursor-pointer items-center justify-center transition-all disabled:opacity-0"
           >
             <LeftArrowIcon />
           </button>
         </div>
-        <div className="absolute top-0 right-0 z-50 flex h-full w-[100px] items-center justify-center bg-[#B2E1C8] opacity-80 lg:w-[200px]">
+        <div className="absolute top-0 right-0 z-50 hidden h-full w-[100px] items-center justify-center bg-[#B2E1C8CC] opacity-80 md:flex lg:w-[200px]">
           <button
             type="button"
-            ref={nextButtonRef}
-            className="flex cursor-pointer items-center justify-center"
+            onClick={onNextButtonClick}
+            disabled={nextBtnDisabled}
+            className="flex cursor-pointer items-center justify-center transition-all disabled:opacity-0"
           >
             <RightArrowIcon />
           </button>
+        </div>
+        <div className="flex w-full items-center justify-center gap-4 md:hidden">
+          {scrollSnaps.map((_, index) => (
+            <button
+              type="button"
+              key={index}
+              onClick={() => onDotButtonClick(index)}
+              className={`${index === selectedIndex ? "bg-primary after:shadow-[inset_0_0_0_0.2rem_var(--color-primary)]" : "bg-transparent after:shadow-[inset_0_0_0_0.2rem_var(--color-secondary)]"} flex size-[1.6rem] cursor-pointer touch-manipulation appearance-none items-center justify-center rounded-full transition-all duration-200 after:size-[1.2rem] after:rounded-full`}
+            />
+          ))}
         </div>
       </article>
 
       <button
         type="button"
-        className="cursor-pointer rounded-xl border px-6 py-3 text-center align-middle"
+        className="bg-white-background-color text-black-text-variant-5 border-grey-border-variant-1 cursor-pointer rounded-xl border px-6 py-3 text-center align-middle"
       >
         See more
       </button>
@@ -165,7 +177,7 @@ const LeftArrowIcon = () => {
     >
       <path
         d="M44.3333 17H1.66667M1.66667 17L17.6667 33M1.66667 17L17.6667 1"
-        stroke="white"
+        stroke="black"
         strokeWidth="1.4"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -184,7 +196,7 @@ const RightArrowIcon = () => {
     >
       <path
         d="M1.33337 19.9999H38.6667M38.6667 19.9999L20 1.33325M38.6667 19.9999L20 38.6666"
-        stroke="white"
+        stroke="black"
         strokeWidth="1.4"
         strokeLinecap="round"
         strokeLinejoin="round"
