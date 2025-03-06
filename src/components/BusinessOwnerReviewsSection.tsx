@@ -1,17 +1,9 @@
 "use client"
-import "swiper/css"
-import "swiper/css/navigation"
-import { useRef, useState, useEffect } from "react"
-import quoteIcon from "@/assets/quote.svg"
-import { Swiper, SwiperSlide } from "swiper/react"
-import { Swiper as SwiperType } from "swiper"
-import { Navigation } from "swiper/modules"
-import Image from "next/image"
 
-interface NavigationParams {
-  prevEl: HTMLElement | null
-  nextEl: HTMLElement | null
-}
+import { useState, useEffect } from "react"
+import quoteIcon from "@/assets/quote.svg"
+import useEmblaCarousel from "embla-carousel-react"
+import Image from "next/image"
 
 const businessOwnerReviews = [
   {
@@ -53,29 +45,23 @@ const businessOwnerReviews = [
 ]
 
 function BusinessOwnerReviewsSection() {
-  const prevButtonRef = useRef(null)
-  const nextButtonRef = useRef(null)
+  const [emblaRef, embla] = useEmblaCarousel({ loop: true })
+  const [selectedIndex, setSelectedIndex] = useState(0)
+  const [scrollSnaps, setScrollSnaps] = useState<number[]>([])
 
-  const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null)
+  const onDotButtonClick = (index: number) => {
+    if (!embla) return
+    embla.scrollTo(index)
+  }
 
   useEffect(() => {
-    if (
-      swiperInstance &&
-      prevButtonRef.current &&
-      nextButtonRef.current &&
-      swiperInstance.params.navigation
-    ) {
-      const navigationParams = swiperInstance.params
-        .navigation as NavigationParams
-
-      if (!navigationParams) return
-
-      navigationParams.prevEl = prevButtonRef.current
-      navigationParams.nextEl = nextButtonRef.current
-      swiperInstance.navigation.init()
-      swiperInstance.navigation.update()
-    }
-  }, [swiperInstance])
+    if (!embla) return
+    const onInit = () => setScrollSnaps(embla.scrollSnapList())
+    const onSelect = () => setSelectedIndex(embla.selectedScrollSnap())
+    onInit()
+    onSelect()
+    embla.on("reInit", onInit).on("reInit", onSelect).on("select", onSelect)
+  }, [embla])
 
   return (
     <section className="flex flex-col items-center justify-center gap-14 bg-[#F6F8FA] p-8">
@@ -91,38 +77,18 @@ function BusinessOwnerReviewsSection() {
       </div>
       {/* Carousel Section */}
 
-      <article className="relative flex h-[700px] w-full justify-center md:h-[400px]">
-        <Swiper
-          loop={true}
-          spaceBetween={30}
-          centeredSlides={true}
-          slidesPerView={1}
-          breakpoints={{
-            1024: {
-              slidesPerView: 2,
-              spaceBetween: 20,
-              centeredSlides: false,
-            },
-            1280: {
-              slidesPerView: 3,
-              spaceBetween: 15,
-              centeredSlides: true,
-            },
-          }}
-          navigation={{
-            nextEl: nextButtonRef.current,
-            prevEl: prevButtonRef.current,
-          }}
-          modules={[Navigation]}
-          onSwiper={setSwiperInstance}
-        >
+      <article
+        ref={emblaRef}
+        className="relative flex h-[700px] w-full flex-col justify-center gap-6 overflow-hidden sm:w-[80%] md:h-[400px] md:w-full"
+      >
+        <div className="flex w-full touch-pan-y touch-pinch-zoom gap-4">
           {businessOwnerReviews.map((review, index) => (
-            <SwiperSlide
+            <div
               key={index}
-              className={`!flex h-full !w-[390px] flex-col items-center transition-all duration-500 md:!w-[80%] md:flex-row lg:!w-[60%]`}
+              className={`flex h-full w-full min-w-0 flex-none [transform:translate3d(0,0,0)] flex-col items-center transition-all duration-500 md:w-[80%] md:flex-row lg:w-[60%]`}
             >
               <figure
-                className={`relative h-[400px] w-full shrink-0 md:h-full md:max-w-[308px]`}
+                className={`relative h-[350px] w-full shrink-0 md:h-full md:max-w-[308px]`}
               >
                 <Image
                   src={review.imagePath}
@@ -135,7 +101,7 @@ function BusinessOwnerReviewsSection() {
                 />
               </figure>
               <div
-                className={`flex max-w-[500px] flex-col gap-4 p-2.5 transition-all md:gap-8 md:p-5`}
+                className={`flex w-full flex-col gap-4 p-2.5 transition-all md:gap-8 md:p-5`}
               >
                 <Image
                   width={86}
@@ -157,14 +123,14 @@ function BusinessOwnerReviewsSection() {
                   </span>
                 </div>
               </div>
-            </SwiperSlide>
+            </div>
           ))}
-        </Swiper>
+        </div>
 
         <div className="absolute top-0 left-0 z-50 hidden h-full w-[100px] items-center justify-center bg-[#B2E1C8] opacity-80 md:flex lg:w-[200px]">
           <button
             type="button"
-            ref={prevButtonRef}
+            onClick={() => embla && embla.scrollPrev()}
             className="flex cursor-pointer items-center justify-center"
           >
             <LeftArrowIcon />
@@ -173,11 +139,21 @@ function BusinessOwnerReviewsSection() {
         <div className="absolute top-0 right-0 z-50 hidden h-full w-[100px] items-center justify-center bg-[#B2E1C8] opacity-80 md:flex lg:w-[200px]">
           <button
             type="button"
-            ref={nextButtonRef}
+            onClick={() => embla && embla.scrollNext()}
             className="flex cursor-pointer items-center justify-center"
           >
             <RightArrowIcon />
           </button>
+        </div>
+        <div className="flex w-full items-center justify-center gap-4 md:hidden">
+          {scrollSnaps.map((_, index) => (
+            <button
+              type="button"
+              key={index}
+              onClick={() => onDotButtonClick(index)}
+              className={`${index === selectedIndex ? "bg-primary after:shadow-[inset_0_0_0_0.2rem_var(--color-primary)]" : "bg-transparent after:shadow-[inset_0_0_0_0.2rem_var(--color-secondary)]"} flex size-[1.6rem] cursor-pointer touch-manipulation appearance-none items-center justify-center rounded-full transition-all duration-200 after:size-[1.2rem] after:rounded-full`}
+            />
+          ))}
         </div>
       </article>
 
