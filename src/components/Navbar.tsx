@@ -31,7 +31,7 @@ const Navbar = () => {
   }
 
   return (
-    <header className="bg-black-background-variant-3 relative mx-auto flex h-20 w-full items-center justify-between px-4 md:px-6">
+    <header className="bg-black-background-variant-3 sticky top-0 z-50 mx-auto flex h-20 w-full items-center justify-between px-4 py-2 md:relative md:px-6">
       <Link href={"/"} className="flex items-center justify-center">
         <svg
           width="142"
@@ -71,20 +71,22 @@ const Navbar = () => {
           />
         </svg>
       </Link>
-      <ul className="hidden h-full items-center gap-10 text-sm leading-[21] font-[400] text-white sm:flex">
+      <ul className="hidden h-full items-center gap-10 text-sm font-normal text-white md:flex md:text-base">
         {navlinks.map((navlink) => (
           <li
-            className="font-mona-sans cursor-pointer capitalize no-underline transition-all hover:opacity-70"
+            className="font-mona-sans cursor-pointer p-4 capitalize no-underline transition-all hover:opacity-70"
             key={navlink.text}
           >
-            <Link href={navlink.url}>{navlink.text}</Link>
+            <Link href={navlink.url} className="size-full">
+              {navlink.text}
+            </Link>
           </li>
         ))}
       </ul>
 
       <Button
         asChild
-        className="font-mona-sans !hidden px-6 py-3 font-medium transition-all hover:opacity-70 focus:ring-white sm:!inline-flex"
+        className="font-mona-sans !hidden px-6 py-3 font-medium transition-all hover:opacity-70 focus:ring-white md:!inline-flex"
       >
         <Link href={"/signup"}>Sign up</Link>
       </Button>
@@ -92,7 +94,7 @@ const Navbar = () => {
       {/* //Mobile Menu Button */}
       <button
         onClick={handleClick}
-        className="z-50 flex h-6 w-8 flex-col justify-between focus:outline-none sm:hidden"
+        className="z-50 flex h-6 w-8 flex-col justify-between focus:outline-none md:hidden"
       >
         <span
           className={`h-1 w-full rounded bg-white transition-all duration-300 ${open ? "translate-y-3.5 rotate-45" : ""}`}
@@ -107,7 +109,7 @@ const Navbar = () => {
 
       {/* //Mobile Menu Navlinks */}
       <ul
-        className={`${open ? "flex -translate-x-1/2 opacity-100" : "hidden -translate-x-[1000px] opacity-0"} bg-black-background-variant-3 absolute left-1/2 z-50 min-h-screen w-full translate-y-78 transform flex-col items-center justify-start gap-6 px-4 py-10 text-center text-sm font-normal text-white transition-all duration-500 sm:!hidden`}
+        className={`${open ? "flex translate-y-0 opacity-100" : "hidden -translate-y-full opacity-0"} bg-black-background-variant-3 absolute inset-0 top-20 z-50 h-dvh w-full flex-col items-center justify-start gap-6 px-4 py-10 text-center text-sm font-normal text-white transition-all duration-500 md:!hidden`}
       >
         {navlinks.map((navlink) => (
           <li
