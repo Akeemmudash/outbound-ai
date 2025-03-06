@@ -1,12 +1,11 @@
 "use client"
-import React from "react"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
-import { zodResolver } from "@hookform/resolvers/zod"
-import Link from "next/link"
 import Button from "@/components/ui/button"
 import Input from "@/components/ui/input"
+import { zodResolver } from "@hookform/resolvers/zod"
+import Link from "next/link"
 import { useRouter } from "next/navigation"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
 
 const logInSchema = z.object({
   email: z.string().email("Invalid email format"),
@@ -33,7 +32,7 @@ export default function Login() {
   }
 
   return (
-    <div className="w-full max-w-96 rounded-lg bg-white p-6 text-[#212121]">
+    <div className="w-8/10 max-w-96 rounded-lg bg-white p-6 text-[#212121]">
       <h2 className="mb-6 text-[32px] font-bold">Log In</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
         <div className="flex flex-col gap-4">
