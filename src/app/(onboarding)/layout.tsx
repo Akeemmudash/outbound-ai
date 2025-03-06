@@ -13,12 +13,12 @@ export default function OnboardingLayout({
         backgroundAttachment: "fixed",
       }}
     >
-      <div className="flex h-screen flex-col items-center justify-center space-y-20 px-[4.5%]">
+      <div className="flex min-h-screen flex-col items-center justify-center gap-8 px-4 py-6 md:gap-16 md:px-[4.5%]">
         <div
-          className="h-[72px] w-[284px]"
+          className="h-[60px] w-[240px] md:h-[72px] md:w-[284px]"
           style={{
             backgroundImage: "url('/images/Logo.png')",
-            backgroundSize: "cover",
+            backgroundSize: "contain",
             backgroundRepeat: "no-repeat",
           }}
         />
