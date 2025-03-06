@@ -23,6 +23,7 @@
   --color-white-text-variant-1: #ececec;
   --color-black-button-variant-1: #1b1b1b;
   --color-grey-border-variant-1: #a0a0a0;
+  --color-blue-border-variant-1: #0063cc;
 }
 
 input:-webkit-autofill {
