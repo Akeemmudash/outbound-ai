@@ -60,18 +60,20 @@ const Card = ({ cardInfo }: { cardInfo: CardProps }) => {
   return (
     <div
       className={
-        "flex w-full flex-col items-start justify-start gap-6 rounded-xl border border-[#E2E2E2] p-5 md:gap-10"
+        "border-grey-border-variant-2 flex w-full flex-col items-start justify-start gap-6 rounded-xl border p-5 md:gap-10"
       }
     >
-      <div className="flex h-10 w-10 items-center justify-center rounded-sm bg-[#2A2A2A]">
+      <div className="bg-black-background-variant-4 flex h-10 w-10 items-center justify-center rounded-sm">
         {icon}
       </div>
 
       <div>
-        <span className="text-[1.15rem] leading-7 font-bold md:text-[1.35rem]">
+        <span className="text-black-text-variant-4 text-[1.15rem] leading-7 font-bold md:text-[1.35rem]">
           {title}
         </span>
-        <p className="mt-2 text-xs leading-5 md:text-sm">{text}</p>
+        <p className="text-grey-text-variant-1 mt-2 text-xs leading-5 md:text-sm">
+          {text}
+        </p>
       </div>
     </div>
   )
@@ -114,10 +116,10 @@ function HowItWorksSection() {
   return (
     <section className="font-mona-sans flex flex-col items-center justify-center gap-8 p-8">
       <div className="flex max-w-[580px] flex-col items-center justify-center gap-1.5 md:gap-3">
-        <h2 className="text-center text-3xl leading-10 font-bold md:text-[2.5rem] md:leading-16">
+        <h2 className="text-black-text-variant-1 text-center text-3xl leading-10 font-bold md:text-[2.5rem] md:leading-16">
           How It Works
         </h2>
-        <p className="text-center text-sm leading-6 md:text-base">
+        <p className="text-black-text-variant-1 text-center text-sm leading-6 md:text-base">
           Easily set up your campaign, let AI handle the calls, and stay in
           control with real-time tracking and insights.
         </p>

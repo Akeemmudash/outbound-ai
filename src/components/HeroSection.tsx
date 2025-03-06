@@ -19,10 +19,10 @@ const HeroSection = () => {
         {/* text */}
         <div className="flex max-w-[675px] flex-col gap-20 md:w-[50%] md:py-[98px] xl:w-[60%] xl:gap-[168px]">
           <div className="gap-6 space-y-6 lg:space-y-8">
-            <h1 className="text-4xl font-bold text-[#090F1C] sm:text-5xl md:text-4xl lg:text-5xl xl:text-[56px] xl:leading-16">
+            <h1 className="text-black-text-variant-2 text-4xl font-bold sm:text-5xl md:text-4xl lg:text-5xl xl:text-[56px] xl:leading-16">
               Reach More Customers, Follow Up With Ease
             </h1>
-            <p className="font-circular-std text-base text-[#53686A] lg:text-2xl lg:leading-10">
+            <p className="font-circular-std text-grey-text-variant-2 text-base lg:text-2xl lg:leading-10">
               This AI-powered calling solution helps you connect with customers
               effortlessly, track conversations in real-time, and never miss an
               opportunity.
@@ -43,7 +43,7 @@ const HeroSection = () => {
                 </Link>
               </Button>
 
-              <Link href="/" className="text-base text-[#090F1C]">
+              <Link href="/" className="text-black-text-variant-2 text-base">
                 Learn more
               </Link>
             </div>
@@ -52,17 +52,21 @@ const HeroSection = () => {
           {/* metrics */}
           <div className="flex items-start px-1">
             <div className="w-1/2 max-w-[221px] space-y-3">
-              <h2 className="text-xl font-extrabold text-[#2A2A2A] lg:text-[32px]">
+              <h2 className="text-black-text-variant-3 text-xl font-extrabold lg:text-[32px]">
                 2k+
               </h2>
-              <p className="text-sm text-[#888888]">Business Owners</p>
+              <p className="text-grey-text-variant-4 text-sm">
+                Business Owners
+              </p>
             </div>
 
             <div className="w-1/2 max-w-[221px] space-y-3">
-              <h2 className="text-xl font-extrabold text-[#2A2A2A] lg:text-[32px]">
+              <h2 className="text-black-background-variant-4 text-xl font-extrabold lg:text-[32px]">
                 20+
               </h2>
-              <p className="text-sm text-[#888888]">Countries Supported</p>
+              <p className="text-grey-text-variant-4 text-sm">
+                Countries Supported
+              </p>
             </div>
           </div>
         </div>
@@ -75,7 +79,7 @@ const HeroSection = () => {
       </div>
 
       {/* bottom banner */}
-      <div className="absolute right-0 bottom-0 left-0 grid w-screen items-center bg-[#1B1B1B] py-6 md:-bottom-10 md:translate-y-2 md:bg-transparent">
+      <div className="bg-black-background-variant-4 absolute right-0 bottom-0 left-0 grid w-screen items-center py-6 md:-bottom-10 md:translate-y-2 md:bg-transparent">
         <div className="relative z-10 mx-auto flex w-full flex-wrap items-center justify-center gap-6 px-6 md:absolute md:justify-between md:gap-10 lg:-rotate-1 lg:gap-14 xl:px-[80px]">
           {brandImages.map((brandImage, index) => (
             <Image

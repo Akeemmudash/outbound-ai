@@ -26,7 +26,7 @@ export default function WhySection() {
         >
           Why Choose Our AI-Powered Outbound Calling Solution?
         </h2>
-        <p className="text-center text-sm leading-6 text-[#53686A] md:text-base">
+        <p className="text-grey-text-variant-2 text-center text-sm leading-6 md:text-base">
           We&apos;re more than just an AI calling system — we&apos;re your
           growth partner. Experience seamless automation, real-time insights,
           and smarter that helps you connect with customers effortlessly.
@@ -42,7 +42,7 @@ export default function WhySection() {
             <h3 className="font-circular-std text-center text-2xl font-bold md:text-start md:text-[2rem]">
               {card.title}
             </h3>
-            <p className="text-secondary font-noto-sans text-center text-sm leading-6 md:text-start md:text-base">
+            <p className="text-grey-text-variant-2 font-noto-sans text-center text-sm leading-6 md:text-start md:text-base">
               {card.text}
             </p>
           </article>
