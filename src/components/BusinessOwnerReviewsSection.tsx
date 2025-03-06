@@ -124,7 +124,7 @@ function BusinessOwnerReviewsSection() {
           ))}
         </div>
 
-        <div className="bg-secondary absolute top-0 left-0 z-50 hidden h-full w-[100px] items-center justify-center opacity-90 md:flex lg:w-[200px]">
+        <div className="absolute top-0 left-0 z-50 hidden h-full w-[100px] items-center justify-center bg-[#B2E1C8CC] opacity-80 md:flex lg:w-[200px]">
           <button
             type="button"
             onClick={onPrevButtonClick}
@@ -134,7 +134,7 @@ function BusinessOwnerReviewsSection() {
             <LeftArrowIcon />
           </button>
         </div>
-        <div className="bg-secondary absolute top-0 right-0 z-50 hidden h-full w-[100px] items-center justify-center opacity-90 md:flex lg:w-[200px]">
+        <div className="absolute top-0 right-0 z-50 hidden h-full w-[100px] items-center justify-center bg-[#B2E1C8CC] opacity-80 md:flex lg:w-[200px]">
           <button
             type="button"
             onClick={onNextButtonClick}
@@ -177,7 +177,7 @@ const LeftArrowIcon = () => {
     >
       <path
         d="M44.3333 17H1.66667M1.66667 17L17.6667 33M1.66667 17L17.6667 1"
-        stroke="white"
+        stroke="black"
         strokeWidth="1.4"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -196,7 +196,7 @@ const RightArrowIcon = () => {
     >
       <path
         d="M1.33337 19.9999H38.6667M38.6667 19.9999L20 1.33325M38.6667 19.9999L20 38.6666"
-        stroke="white"
+        stroke="black"
         strokeWidth="1.4"
         strokeLinecap="round"
         strokeLinejoin="round"
